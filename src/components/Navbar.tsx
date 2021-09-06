@@ -36,10 +36,10 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden sm:flex flex-1 justify-end items-center text-sm">
-          <a href="/" className="px-2 hover:underline">
+          <a href="/login" className="px-2 hover:underline">
             giriş
           </a>
-          <a href="/" className="ml-1 px-2 hover:underline">
+          <a href="/signup" className="ml-1 px-2 hover:underline">
             üye ol
           </a>
         </div>
