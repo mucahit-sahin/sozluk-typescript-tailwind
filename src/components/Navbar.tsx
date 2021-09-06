@@ -4,7 +4,7 @@ import QuickIndexItem from "./QuickIndexItem";
 const Navbar = () => {
   const [more, setMore] = useState<boolean>(false);
   return (
-    <div className="border-t-4 border-b border-mantis-500">
+    <div className="sticky top-0 bg-white border-t-4 border-b border-mantis-500">
       <div className="mx-2 sm:mx-auto max-w-7xl flex py-2">
         <div className="w-1/6 sm:flex-1 flex items-center">
           <img
