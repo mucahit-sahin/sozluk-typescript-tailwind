@@ -6,7 +6,7 @@ const Content = () => {
     <div className="container mx-auto flex">
       <Agenda />
       <Topics />
-      <div className="flex flex-col w-1/5">dene</div>
+      <div className="flex flex-col w-1/5">reklam</div>
     </div>
   );
 };
