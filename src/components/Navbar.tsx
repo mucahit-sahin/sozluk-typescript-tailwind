@@ -1,8 +1,16 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { AppState } from "../store";
+import { logout } from "../store/actions/authActions";
 import QuickIndexItem from "./QuickIndexItem";
 
 const Navbar = () => {
   const [more, setMore] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state: AppState) => state.auth);
+  console.log(user);
   return (
     <div className="sticky top-0 bg-white border-t-4 border-b border-mantis-500">
       <div className="mx-2 sm:mx-auto max-w-7xl flex py-2">
@@ -36,12 +44,23 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden sm:flex flex-1 justify-end items-center text-sm">
-          <a href="/login" className="px-2 hover:underline">
-            giriş
-          </a>
-          <a href="/signup" className="ml-1 px-2 hover:underline">
-            üye ol
-          </a>
+          {user.username ? (
+            <>
+              <span className="px-2 hover:underline">{user.username}</span>
+              <Link to="/#" onClick={() => dispatch(logout())}>
+                çıkış yap
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="px-2 hover:underline">
+                giriş
+              </Link>
+              <Link to="/signup" className="ml-1 px-2 hover:underline">
+                üye ol
+              </Link>
+            </>
+          )}
         </div>
       </div>
       <div className="mx-auto max-w-7xl">
@@ -92,8 +111,8 @@ const Navbar = () => {
             className="sm:hidden"
           />
           <li className="hidden mx-2  flex-1 sm:flex  border-b-4  border-transparent hover:border-mantis-500 font-semibold">
-            <a
-              href="/#"
+            <Link
+              to="/#"
               title="kanallar"
               className="flex flex-1 justify-center items-center hover:text-mantis-500 "
               onClick={() => setMore(true)}
@@ -101,7 +120,7 @@ const Navbar = () => {
               <svg fill="black" width="20" viewBox="0 0 512 512">
                 <path d="m64 192c-34 0-64 30-64 64 0 34 30 64 64 64 34 0 64-30 64-64 0-34-30-64-64-64z m384 0c-34 0-64 30-64 64 0 34 30 64 64 64 34 0 64-30 64-64 0-34-30-64-64-64z m-192 0c-34 0-64 30-64 64 0 34 30 64 64 64 34 0 64-30 64-64 0-34-30-64-64-64z"></path>
               </svg>
-            </a>
+            </Link>
 
             {more && (
               <>
@@ -112,19 +131,19 @@ const Navbar = () => {
                 ></div>
                 <ul className="absolute flex flex-col bg-white border border-gray-400 rounded z-20">
                   <li className="text-center px-7  py-1 hover:bg-gray-300">
-                    <a href="/">deneme1</a>
+                    <Link to="/">deneme1</Link>
                   </li>
                   <li className="text-center px-7 py-1 hover:bg-gray-300">
-                    <a href="/">deneme1</a>
+                    <Link to="/">deneme1</Link>
                   </li>
                   <li className="text-center px-7 py-1 hover:bg-gray-300">
-                    <a href="/">deneme1</a>
+                    <Link to="/">deneme1</Link>
                   </li>
                   <li className="text-center px-7 py-1 hover:bg-gray-300 ">
-                    <a href="/">deneme1</a>
+                    <Link to="/">deneme1</Link>
                   </li>
                   <li className="text-center px-7 py-1 hover:bg-gray-300">
-                    <a href="/">deneme1</a>
+                    <Link to="/">deneme1</Link>
                   </li>
                 </ul>
               </>

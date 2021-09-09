@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import TopicItem from "./TopicItem";
 
 const Topic = () => {
@@ -8,13 +9,13 @@ const Topic = () => {
       </h1>
       <div className="flex flex-row">
         <div className="text-sm text-bahama-blue-500">
-          <a href="/" className="mr-2">
+          <Link to="/" className="mr-2">
             tümü
-          </a>
+          </Link>
           |
-          <a href="/" className="ml-2">
+          <Link to="/" className="ml-2">
             bugün
-          </a>
+          </Link>
         </div>
         <div className="ml-auto">
           <a

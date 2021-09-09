@@ -1,22 +1,38 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { register as registerAction } from "../store/actions/authActions";
 
 type Inputs = {
   username: string;
   email: string;
-  datetime: Date;
+  birtdate: Date;
   password: string;
   passwordRepeat: string;
   eula: boolean;
 };
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    dispatch(
+      registerAction({
+        email: data.email,
+        password: data.password,
+        username: data.username,
+        birtdate: data.birtdate,
+      })
+    );
+    history.push("/");
+  };
   return (
     <div className="mx-6 w-96 mb-6">
       <h1 className="my-6 text-xl font-bold">yeni kullanıcı kaydı</h1>
@@ -53,10 +69,10 @@ const Signup = () => {
           <label className="block mb-1">doğum tarihi</label>
           <input
             type="date"
-            {...register("datetime", { required: "Bu alan boş olamaz." })}
+            {...register("birtdate", { required: "Bu alan boş olamaz." })}
           />
-          {errors.datetime && (
-            <span className="text-red-500">{errors.datetime.message}</span>
+          {errors.birtdate && (
+            <span className="text-red-500">{errors.birtdate.message}</span>
           )}
         </div>
         <div className="mb-2">
@@ -83,7 +99,7 @@ const Signup = () => {
             className="border border-gray-300 rounded-sm p-2 text-sm w-full"
             {...register("passwordRepeat", {
               validate: (value) =>
-                value === watch("password") || "The passwords do not match",
+                value === watch("password") || "Şifreler eşleşmiyor.",
             })}
           />
           {errors.passwordRepeat && (

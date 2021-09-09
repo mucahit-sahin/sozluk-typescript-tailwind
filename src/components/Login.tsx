@@ -1,4 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { login } from "../store/actions/authActions";
 
 type Inputs = {
   email: string;
@@ -7,12 +10,19 @@ type Inputs = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    dispatch(login({ email: data.email, password: data.password }));
+    history.push("/");
+  };
 
   return (
     <div className="mx-6 w-96">

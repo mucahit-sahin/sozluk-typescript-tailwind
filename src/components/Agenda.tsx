@@ -3,7 +3,7 @@ import AgendaItem from "./AgendaItem";
 const Agenda = () => {
   return (
     <div
-      className="hidden lg:block w-1/5 sticky top-28 mt-4 overflow-y-scroll pr-4"
+      className="hidden lg:block w-1/5 sticky top-28 z-0 mt-4 overflow-y-scroll pr-4"
       style={{ height: "calc(100vh - 120px)" }}
     >
       <div className="flex flex-row mb-2 items-center">

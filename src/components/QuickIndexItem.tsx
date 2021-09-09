@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const QuickIndexItem = ({
   text,
   href,
@@ -15,9 +17,9 @@ const QuickIndexItem = ({
         className && className
       }`}
     >
-      <a href={href} title={title}>
+      <Link to={href} title={title}>
         {text}
-      </a>
+      </Link>
     </li>
   );
 };

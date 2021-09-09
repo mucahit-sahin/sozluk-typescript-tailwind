@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const TopicItem = ({
   content,
   username,
@@ -13,7 +15,7 @@ const TopicItem = ({
         <span>{content}</span>
       </div>
       <div className="flex flex-row">
-        <a href="/like" className="mr-2">
+        <Link to="/like" className="mr-2">
           <svg
             id="chevron-up-thick"
             fill="blue"
@@ -22,8 +24,8 @@ const TopicItem = ({
           >
             <path d="m496 341l-189-225c-31-27-63-27-94 0l-197 225c-16 15-12 43 4 55 15 16 39 12 55-4l185-209 177 209c16 16 40 20 55 4 20-12 20-40 4-55z"></path>
           </svg>
-        </a>
-        <a href="/dislike">
+        </Link>
+        <Link to="/dislike">
           <svg
             id="chevron-down-thick"
             fill="blue"
@@ -32,12 +34,12 @@ const TopicItem = ({
           >
             <path d="m492 108c-15-15-43-12-55 4l-177 213-185-209c-16-16-40-20-55-4-16 12-20 40-4 55l197 225c31 31 63 27 94 0l189-225c16-15 16-43-4-59z"></path>
           </svg>
-        </a>
+        </Link>
         <div className="ml-auto">
           <span className="text-gray text-xs mr-2">{datetime}</span>
-          <a href="/" className="text-gray text-sm">
+          <Link to="/" className="text-gray text-sm">
             {username}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
