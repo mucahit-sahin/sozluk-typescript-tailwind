@@ -9,13 +9,15 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import Topic from "./components/Topic";
-import { isLoggedIn } from "./store/actions/authActions";
-
+import { loadUser } from "./store/actions/authActions";
+import AuthRoute from "./components/AuthRoute";
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(isLoggedIn());
+    dispatch(loadUser());
   }, [dispatch]);
+
   return (
     <div className="">
       <Navbar />
@@ -23,18 +25,18 @@ function App() {
         <Route path="/" exact>
           <Content />
         </Route>
-        <Route path="/login">
+        <AuthRoute path="/login">
           <div className="container mx-auto flex">
             <Agenda />
             <Login />
           </div>
-        </Route>
-        <Route path="/signup">
+        </AuthRoute>
+        <AuthRoute path="/signup">
           <div className="container mx-auto flex">
             <Agenda />
             <Signup />
           </div>
-        </Route>
+        </AuthRoute>
         <Route path="/*">
           <div className="container mx-auto flex">
             <Agenda />

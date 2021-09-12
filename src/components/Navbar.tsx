@@ -1,20 +1,32 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import slugify from "slugify";
 import { AppState } from "../store";
 import { logout } from "../store/actions/authActions";
+import { searchAction } from "../store/actions/postActions";
 import QuickIndexItem from "./QuickIndexItem";
 
 const Navbar = () => {
   const [more, setMore] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
+
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const searchPost = () => {
+    if (search === "") return;
+    dispatch(searchAction(search));
+    history.push(`/${slugify(search, "_")}`);
+    setSearch("");
+  };
 
   const { user } = useSelector((state: AppState) => state.auth);
-  console.log(user);
+
   return (
     <div className="sticky top-0 bg-white border-t-4 border-b border-mantis-500">
       <div className="mx-2 sm:mx-auto max-w-7xl flex py-2">
-        <div className="w-1/6 sm:flex-1 flex items-center">
+        <Link to="/" className="w-1/6 sm:flex-1 flex items-center">
           <img
             className="hidden sm:block h-6"
             src="https://ekstat.com/img/new-design/eksisozluk_logo.svg"
@@ -25,14 +37,20 @@ const Navbar = () => {
             src="https://ekstat.com/img/ilogo_smallv2.png"
             alt="mobilelogo"
           />
-        </div>
+        </Link>
         <div className="w-5/6  sm:flex-1 flex justify-center">
           <input
             type="text"
             placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && searchPost()}
             className="flex-1 text-sm px-1 rounded-tl-md rounded-bl-md border-mantis-500 border leading-7"
           />
-          <button className=" bg-mantis-500 h-full leading-7 border border-mantis-500 px-2 rounded-tr-md rounded-br-md">
+          <button
+            onClick={() => searchPost()}
+            className=" bg-mantis-500 h-full leading-7 border border-mantis-500 px-2 rounded-tr-md rounded-br-md"
+          >
             <svg
               className="h-4 "
               id="eksico-search"
