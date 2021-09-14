@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { AppState } from "../store";
 import { login } from "../store/actions/authActions";
 
 type Inputs = {
@@ -20,9 +21,11 @@ const Login = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    dispatch(login({ email: data.email, password: data.password }));
-    history.push("/");
+    dispatch(
+      login({ email: data.email, password: data.password, history: history })
+    );
   };
+  const { error } = useSelector((state: AppState) => state.auth);
 
   return (
     <div className="mx-6 w-96">
@@ -60,6 +63,7 @@ const Login = () => {
         >
           giriş yap
         </button>
+        {error !== "" && <span className="text-red-500">Auth Failed</span>}
       </form>
     </div>
   );

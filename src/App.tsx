@@ -37,7 +37,7 @@ function App() {
             <Signup />
           </div>
         </AuthRoute>
-        <Route path="/*">
+        <Route path="/:id">
           <div className="container mx-auto flex">
             <Agenda />
             <Topic />

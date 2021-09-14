@@ -7,7 +7,7 @@ const TopicItem = ({
 }: {
   content: string;
   username: string;
-  datetime: string;
+  datetime: Date;
 }) => {
   return (
     <div className="my-5">

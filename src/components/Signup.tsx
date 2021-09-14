@@ -29,9 +29,9 @@ const Signup = () => {
         password: data.password,
         username: data.username,
         birtdate: data.birtdate,
+        history: history,
       })
     );
-    history.push("/");
   };
   return (
     <div className="mx-6 w-96 mb-6">

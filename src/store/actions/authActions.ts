@@ -3,25 +3,27 @@ import { Auth, AuthDispatch, User } from "../../types/auth";
 import setAuthToken from "../../utils/setAuthToken";
 
 
-export const login = ({ email, password }: { email: string; password: string;}) => async (dispatch: AuthDispatch) => {
+export const login = ({ email, password,history }: { email: string; password: string;history:any}) => async (dispatch: AuthDispatch) => {
     dispatch({ type: "LOGIN_START" });
     try {
       const response = await api.post("/user/signin", { email, password });
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
       localStorage.setItem("token", response.data.token);
       dispatch(loadUser());
+      history.push("/");
     } catch {
       dispatch({ type: "LOGIN_ERROR" });
     }
 };
 
-export const register = ({ email, password,birtdate,username }: { email: string; password: string;birtdate: Date;username: string;}) => async (dispatch: AuthDispatch) => {
+export const register = ({ email, password, birtdate, username, history }: { email: string; password: string; birtdate: Date; username: string; history: any;}) => async (dispatch: AuthDispatch) => {
     dispatch({ type: "REGISTER_START" });
     try {
         const response = await api.post<Auth>("/user/signup", { email, password,birtdate,username  });
       dispatch({ type: "REGISTER_SUCCESS", payload: response.data });
       localStorage.setItem("token", response.data.token);
       dispatch(loadUser());
+      history.push("/");
     } catch {
       dispatch({ type: "REGISTER_ERROR" });
     }

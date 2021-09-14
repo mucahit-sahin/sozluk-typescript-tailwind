@@ -11,7 +11,7 @@ const authReducer = (state:AuthState=defaultState,action:AuthAction) => {
     switch (action.type) {
         case "LOGIN_START":
         case "REGISTER_START":
-            return {...state,loading:true,token:""};
+            return {...state,loading:true,token:"",error: ""};
         case "LOGIN_SUCCESS":
         case "REGISTER_SUCCESS":
             return { ...state,token:action.payload.token.toString(), loading: false};

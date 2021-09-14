@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import slugify from "slugify";
 import { AppState } from "../store";
 import { logout } from "../store/actions/authActions";
-import { searchAction } from "../store/actions/postActions";
+import { isTherePost } from "../store/actions/postActions";
 import QuickIndexItem from "./QuickIndexItem";
 
 const Navbar = () => {
@@ -16,8 +15,7 @@ const Navbar = () => {
 
   const searchPost = () => {
     if (search === "") return;
-    dispatch(searchAction(search));
-    history.push(`/${slugify(search, "_")}`);
+    dispatch(isTherePost(search, history));
     setSearch("");
   };
 
