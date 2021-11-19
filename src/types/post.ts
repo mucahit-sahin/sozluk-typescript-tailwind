@@ -3,6 +3,7 @@ import { ThunkDispatch } from "redux-thunk";
 export interface PostState {
     search?: string;
     post: Post;
+    posts: Post[];
     loading: boolean;
     error: string;
 }
@@ -91,8 +92,20 @@ interface IS_THERE_POST {
     payload: string;
 }
 
+interface GET_LATEST_POSTS_START {
+    type: "GET_LATEST_POSTS_START";
+}
+  
+interface GET_LATEST_POSTS_SUCCESS {
+    type: "GET_LATEST_POSTS_SUCCESS";
+    payload: Post[];
+}
+  
+interface GET_LATEST_POSTS_ERROR {
+    type: "GET_LATEST_POSTS_ERROR";
+}
 
-export type PostAction = SEARCH_ERROR | SEARCH_START | SEARCH_SUCCESS|SEARCH|CREATE_POST_START|CREATE_POST_SUCCESS|CREATE_POST_ERROR|ADD_COMMENT_ERROR|ADD_COMMENT_START|ADD_COMMENT_SUCCESS|IS_THERE_POST;
+export type PostAction = SEARCH_ERROR | SEARCH_START | SEARCH_SUCCESS|SEARCH|CREATE_POST_START|CREATE_POST_SUCCESS|CREATE_POST_ERROR|ADD_COMMENT_ERROR|ADD_COMMENT_START|ADD_COMMENT_SUCCESS|IS_THERE_POST|GET_LATEST_POSTS_ERROR|GET_LATEST_POSTS_START|GET_LATEST_POSTS_SUCCESS;
 
 export type PostDispatch = ThunkDispatch<
     PostState,

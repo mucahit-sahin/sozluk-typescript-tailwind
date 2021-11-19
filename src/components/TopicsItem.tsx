@@ -5,16 +5,18 @@ const TopicsItem = ({
   content,
   username,
   datetime,
+  slug,
 }: {
   title: string;
   content: string;
   username: string;
   datetime: string;
+  slug: string;
 }) => {
   return (
     <div className="flex flex-col mt-3">
       <h1 className="break-words text-xl text-bahama-blue-500 font-bold mb-2">
-        <Link to="/">{title}</Link>
+        <Link to={"/" + slug}>{title}</Link>
       </h1>
       <div className="break-words mb-1">
         <span>{content}</span>

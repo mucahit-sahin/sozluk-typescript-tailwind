@@ -1,12 +1,9 @@
-import { useSelector } from "react-redux";
-import { AppState } from "../store";
 import useQuery from "../utils/useQuery";
 import Agenda from "./Agenda";
 import CreatePost from "./CreatePost";
 import Topics from "./Topics";
 
 const Content = () => {
-  const { search } = useSelector((state: AppState) => state.post);
   let query = useQuery();
 
   return (
@@ -15,10 +12,10 @@ const Content = () => {
       {query.get("q") ? (
         <div className="flex flex-col w-full lg:w-3/5 px-6">
           <h1 className="break-words text-xl text-bahama-blue-500 font-bold mb-2">
-            {search}
+            {query.get("q")}
           </h1>
           <span>böyle bir şey yok.</span>
-          <CreatePost title={search!} />
+          <CreatePost title={query.get("q")!} />
         </div>
       ) : (
         <Topics />

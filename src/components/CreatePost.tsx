@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import slugify from "slugify";
 import { AppState } from "../store";
 import { addCommentToPost, createPost } from "../store/actions/postActions";
@@ -13,6 +14,7 @@ const CreatePost = ({
   comment?: boolean;
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { user } = useSelector((state: AppState) => state.auth);
 
   const [form, setForm] = useState<PostForm>({
@@ -38,8 +40,8 @@ const CreatePost = ({
             onClick={() => {
               form.message !== "" &&
                 (comment
-                  ? dispatch(addCommentToPost(title, form.message))
-                  : dispatch(createPost(form)));
+                  ? dispatch(addCommentToPost(title, form.message, history))
+                  : dispatch(createPost(form, history)));
             }}
             className="bg-mantis-500 text-white border border-mantis-700 rounded p-2"
           >

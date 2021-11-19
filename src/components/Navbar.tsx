@@ -114,18 +114,26 @@ const Navbar = () => {
             text=" #siyaset"
             className="hidden md:block"
           />
-          <QuickIndexItem
-            href="/login"
-            title="giriş"
-            text="giriş"
-            className="sm:hidden"
-          />
-          <QuickIndexItem
-            href="/signup"
-            title="üye ol"
-            text="üye ol"
-            className="sm:hidden"
-          />
+          {user.username ? (
+            <span className=" sm:hidden px-2 flex justify-center items-center hover:underline">
+              {user.username}
+            </span>
+          ) : (
+            <>
+              <QuickIndexItem
+                href="/login"
+                title="giriş"
+                text="giriş"
+                className="sm:hidden"
+              />
+              <QuickIndexItem
+                href="/signup"
+                title="üye ol"
+                text="üye ol"
+                className="sm:hidden"
+              />
+            </>
+          )}
           <li className="hidden mx-2  flex-1 sm:flex  border-b-4  border-transparent hover:border-mantis-500 font-semibold">
             <Link
               to="/#"

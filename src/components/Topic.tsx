@@ -11,7 +11,7 @@ const Topic = () => {
   let { id } = useParams<{ id?: string }>();
 
   useEffect(() => {
-    console.log("topic useEffect");
+    console.log(id);
     dispatch(searchPostAction(id!));
   }, [dispatch, id]);
 
