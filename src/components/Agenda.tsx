@@ -1,6 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../store";
+import { getAgenda } from "../store/actions/agendaActions";
 import AgendaItem from "./AgendaItem";
 
 const Agenda = () => {
+  const dispatch = useDispatch();
+  const { agenda, loading } = useSelector((state: AppState) => state.agenda);
+
+  useEffect(() => {
+    dispatch(getAgenda());
+  }, [dispatch]);
+
   return (
     <div
       className="hidden lg:block w-1/5 sticky top-28 z-0 mt-4 overflow-y-scroll pr-4"
@@ -13,25 +24,20 @@ const Agenda = () => {
         </svg>
       </div>
       <ul className="flex-col">
-        <AgendaItem
-          title="baslıkbas lıkbaslı kbaslıkbaslık baslıkbaslıkbaslık"
-          count={250}
-        />
-        <AgendaItem title="baslık2" count={68} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
-        <AgendaItem title="baslık3" count={45} />
+        {loading ? (
+          <div>Loading...</div>
+        ) : agenda.length > 0 ? (
+          agenda.map((item, index) => (
+            <AgendaItem
+              key={index}
+              title={item.title}
+              slug={item.slug}
+              count={item.todayCount}
+            />
+          ))
+        ) : (
+          <div>Gündem Boş</div>
+        )}
       </ul>
     </div>
   );
