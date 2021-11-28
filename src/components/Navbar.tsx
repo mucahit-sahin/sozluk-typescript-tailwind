@@ -82,34 +82,34 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl">
         <ul id="quick-index-nav" className="flex flex-row">
           <QuickIndexItem
-            href="/basliklar/gundem"
+            href="/#"
             title="dünyamızda neler olup bitiyor"
             text="gündem"
           />
           <QuickIndexItem
-            href="/debe"
+            href="/#"
             title="dünün en beğenilen entry'leri"
             text="debe"
           />
           <QuickIndexItem
-            href="/basliklar/sorunsal"
+            href="/#"
             title="dünyamızda neler olup bitiyor"
             text="sorunsallar"
           />
           <QuickIndexItem
-            href="/basliklar/kanal/spor"
+            href="/#"
             title="futbol, basketbol, tenis ve curling gibi ata sporları"
             text="#spor"
             className="hidden md:block"
           />
           <QuickIndexItem
-            href="/basliklar/kanal/iliskiler"
+            href="/#"
             title="sevgili, eski sevgili ve hoşlanılan kız"
             text="#ilişkiler"
             className="hidden md:block"
           />
           <QuickIndexItem
-            href="/basliklar/kanal/siyaset"
+            href="/#"
             title="partiler, politikacılar, terör, savaş kan ve korku"
             text=" #siyaset"
             className="hidden md:block"
