@@ -20,7 +20,7 @@ const Content = () => {
       ) : (
         <Topics />
       )}
-      <div className="flex flex-col w-1/5">reklam</div>
+      <div className="hidden lg:flex flex-col w-1/5">reklam</div>
     </div>
   );
 };
