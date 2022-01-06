@@ -1,11 +1,11 @@
 import api from "../../api";
-import axios from "axios";
+
 import { Post, PostDispatch, PostForm } from "../../types/post";
 
 export const getLatestPost = () => async (dispatch: PostDispatch) => {
   dispatch({ type: "GET_LATEST_POSTS_START" });
   try {
-    const response = await axios.get<Post[]>(`/post`);
+    const response = await api.get<Post[]>(`/post`);
     dispatch({ type: "GET_LATEST_POSTS_SUCCESS", payload: response.data });
   } catch (error) {
     dispatch({ type: "GET_LATEST_POSTS_ERROR" });
