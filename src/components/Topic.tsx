@@ -72,6 +72,10 @@ const Topic = () => {
               content={comment.message}
               datetime={comment.createdAt}
               username={comment.username}
+              likes={comment.likes}
+              dislikes={comment.unLikes}
+              postId={post.slug}
+              commentId={index}
             />
           ))}
           <div className="flex">

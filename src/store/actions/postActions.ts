@@ -1,5 +1,4 @@
 import api from "../../api";
-
 import { Post, PostDispatch, PostForm } from "../../types/post";
 
 export const getLatestPost = () => async (dispatch: PostDispatch) => {
@@ -54,3 +53,38 @@ export const addCommentToPost = (id:string,message:string,history:any) => async 
   }
 };
 
+export const likeToComment = (id: string,commentId:number) => async (dispatch: PostDispatch) => {
+  try {
+    const response = await api.post<Post>(`/post/${id}/like/${commentId}`);
+    dispatch({ type: "LIKE_COMMENT_SUCCESS", payload: response.data });
+  } catch {
+    dispatch({ type: "LIKE_COMMENT_ERROR" });
+  }
+}
+
+export const unlikeToComment = (id: string,commentId:number) => async (dispatch: PostDispatch) => {
+  try {
+    const response = await api.post<Post>(`/post/${id}/unlike/${commentId}`);
+    dispatch({ type: "UNLIKE_COMMENT_SUCCESS", payload: response.data });
+  } catch {
+    dispatch({ type: "UNLIKE_COMMENT_ERROR" });
+  }
+}
+
+export const dislikeToComment = (id: string,commentId:number) => async (dispatch: PostDispatch) => {
+  try {
+    const response = await api.post<Post>(`/post/${id}/dislike/${commentId}`);
+    dispatch({ type: "DISLIKE_COMMENT_SUCCESS", payload: response.data });
+  } catch {
+    dispatch({ type: "DISLIKE_COMMENT_ERROR" });
+  }
+}
+
+export const undislikeToComment = (id: string,commentId:number) => async (dispatch: PostDispatch) => {
+  try {
+    const response = await api.post<Post>(`/post/${id}/undislike/${commentId}`);
+    dispatch({ type: "UNDISLIKE_COMMENT_SUCCESS", payload: response.data });
+  } catch {
+    dispatch({ type: "UNDISLIKE_COMMENT_ERROR" });
+  }
+}

@@ -26,6 +26,9 @@ const Topics = () => {
             datetime={post.comments[
               post.comments.length - 1
             ].createdAt.toString()}
+            likes={post.comments[post.comments.length - 1].likes}
+            dislikes={post.comments[post.comments.length - 1].unLikes}
+            commentId={post.comments.length - 1}
           />
         ))
       )}

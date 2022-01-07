@@ -7,7 +7,7 @@ const Content = () => {
   let query = useQuery();
 
   return (
-    <div className="container mx-auto flex">
+    <div className="container sm:mx-auto max-w-7xl flex">
       <Agenda />
       {query.get("q") ? (
         <div className="flex flex-col w-full lg:w-3/5 px-6">
