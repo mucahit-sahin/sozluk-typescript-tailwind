@@ -1,5 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { AppState } from "../store";
 import {
   dislikeToComment,
   likeToComment,
@@ -25,24 +26,25 @@ const TopicItem = ({
   commentId: number;
 }) => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state: AppState) => state.auth);
 
   const likeorunlike = () => {
-    if (likes.includes(username)) {
+    if (likes.includes(user.username)) {
       dispatch(unlikeToComment(postId, commentId));
     } else {
       dispatch(likeToComment(postId, commentId));
-      if (dislikes.includes(username)) {
+      if (dislikes.includes(user.username)) {
         dispatch(undislikeToComment(postId, commentId));
       }
     }
   };
 
   const dislikeorundislike = () => {
-    if (dislikes.includes(username)) {
+    if (dislikes.includes(user.username)) {
       dispatch(undislikeToComment(postId, commentId));
     } else {
       dispatch(dislikeToComment(postId, commentId));
-      if (likes.includes(username)) {
+      if (likes.includes(user.username)) {
         dispatch(unlikeToComment(postId, commentId));
       }
     }
@@ -55,7 +57,7 @@ const TopicItem = ({
       <div className="flex flex-row">
         <div
           className={`mr-2 p-1 flex items-center rounded hover:bg-yellow-200 ${
-            likes.includes(username) && "bg-yellow-400"
+            likes.includes(user.username) && "bg-yellow-400"
           }`}
           onClick={() => likeorunlike()}
           title="Like"
@@ -73,7 +75,7 @@ const TopicItem = ({
         <div
           onClick={() => dislikeorundislike()}
           className={`p-1 flex items-center rounded hover:bg-yellow-200  ${
-            dislikes.includes(username) && "bg-yellow-400 "
+            dislikes.includes(user.username) && "bg-yellow-400 "
           }`}
           title="dislike"
         >
