@@ -22,32 +22,24 @@ function App() {
   return (
     <div className="">
       <Navbar />
-      <Switch>
-        <Route path="/" exact>
-          <Content />
-        </Route>
-        <AuthRoute path="/login">
-          <div className="container mx-auto max-w-7xl flex">
-            <Agenda />
+      <div className="container mx-auto max-w-7xl flex">
+        <Agenda />
+        <Switch>
+          <Route path="/" exact>
+            <Content />
+          </Route>
+          <AuthRoute path="/login">
             <Login />
-            <Ads />
-          </div>
-        </AuthRoute>
-        <AuthRoute path="/signup">
-          <div className="container mx-auto max-w-7xl flex">
-            <Agenda />
+          </AuthRoute>
+          <AuthRoute path="/signup">
             <Signup />
-            <Ads />
-          </div>
-        </AuthRoute>
-        <Route path="/:id">
-          <div className="container mx-auto max-w-7xl flex">
-            <Agenda />
+          </AuthRoute>
+          <Route path="/:id">
             <Topic />
-            <Ads />
-          </div>
-        </Route>
-      </Switch>
+          </Route>
+        </Switch>
+        <Ads />
+      </div>
     </div>
   );
 }

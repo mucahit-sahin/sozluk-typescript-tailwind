@@ -13,7 +13,7 @@ const Topics = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col w-full lg:w-3/5 px-6">
+    <div className="flex flex-col w-full px-6">
       {loading ? (
         <span>yükleniyor</span>
       ) : (
