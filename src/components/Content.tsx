@@ -1,4 +1,5 @@
 import useQuery from "../utils/useQuery";
+import Ads from "./Ads";
 import Agenda from "./Agenda";
 import CreatePost from "./CreatePost";
 import Topics from "./Topics";
@@ -20,7 +21,7 @@ const Content = () => {
       ) : (
         <Topics />
       )}
-      <div className="hidden lg:flex flex-col w-1/5">reklam</div>
+      <Ads />
     </div>
   );
 };

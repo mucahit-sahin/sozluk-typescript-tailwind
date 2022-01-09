@@ -11,6 +11,7 @@ import Signup from "./components/Signup";
 import Topic from "./components/Topic";
 import { loadUser } from "./store/actions/authActions";
 import AuthRoute from "./components/AuthRoute";
+import Ads from "./components/Ads";
 function App() {
   const dispatch = useDispatch();
 
@@ -26,21 +27,24 @@ function App() {
           <Content />
         </Route>
         <AuthRoute path="/login">
-          <div className="container mx-auto flex">
+          <div className="container mx-auto max-w-7xl flex">
             <Agenda />
             <Login />
+            <Ads />
           </div>
         </AuthRoute>
         <AuthRoute path="/signup">
-          <div className="container mx-auto flex">
+          <div className="container mx-auto max-w-7xl flex">
             <Agenda />
             <Signup />
+            <Ads />
           </div>
         </AuthRoute>
         <Route path="/:id">
-          <div className="container mx-auto flex">
+          <div className="container mx-auto max-w-7xl flex">
             <Agenda />
             <Topic />
+            <Ads />
           </div>
         </Route>
       </Switch>
