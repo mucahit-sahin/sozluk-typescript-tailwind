@@ -1,10 +1,17 @@
 # Eksi Sozluk Frontend
 
+In this project, I tried to make a site like "eksisozluk". I developed the backend part myself. I used mongodb as database.
+
+## <a href="https://github.com/mucahit-sahin/sozluk-backend" target="_blank">View Backend Repository</a>
+
+## <a href="https://eksisozluk.vercel.app/" target="_blank">Live Demo</a>
+
 ## Used Technologies
 
 - React
 - Typescript
 - Redux
+- Tailwind
 
 ## Screenshoots
 
