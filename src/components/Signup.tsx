@@ -36,10 +36,12 @@ const Signup = () => {
   return (
     <div className="lg:w-3/5 flex">
       <div className="mx-6 w-96 mb-6">
-        <h1 className="my-6 text-xl font-bold">yeni kullanıcı kaydı</h1>
+        <h1 className="my-6 text-xl font-bold dark:text-white">
+          yeni kullanıcı kaydı
+        </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-2">
-            <label className="block mb-1"> nick</label>
+            <label className="block mb-1 dark:text-white"> nick</label>
             <input
               type="text"
               className="border border-gray-300 rounded-sm p-2 text-sm w-full"
@@ -56,7 +58,7 @@ const Signup = () => {
             )}
           </div>
           <div className="mb-2">
-            <label className="block mb-1"> email</label>
+            <label className="block mb-1 dark:text-white"> email</label>
             <input
               type="email"
               className="border border-gray-300 rounded-sm p-2 text-sm w-full"
@@ -67,7 +69,7 @@ const Signup = () => {
             )}
           </div>
           <div className="mb-2">
-            <label className="block mb-1">doğum tarihi</label>
+            <label className="block mb-1 dark:text-white">doğum tarihi</label>
             <input
               type="date"
               {...register("birtdate", { required: "Bu alan boş olamaz." })}
@@ -77,7 +79,7 @@ const Signup = () => {
             )}
           </div>
           <div className="mb-2">
-            <label className="block mb-1"> şifre</label>
+            <label className="block mb-1 dark:text-white"> şifre</label>
             <input
               type="password"
               className="border border-gray-300 rounded-sm p-2 text-sm w-full"
@@ -94,7 +96,7 @@ const Signup = () => {
             )}
           </div>
           <div className="mb-2">
-            <label className="block mb-1"> şifre(tekrar)</label>
+            <label className="block mb-1 dark:text-white"> şifre(tekrar)</label>
             <input
               type="password"
               className="border border-gray-300 rounded-sm p-2 text-sm w-full"
@@ -115,7 +117,9 @@ const Signup = () => {
               {...register("eula", { required: true })}
               className="mr-2"
             />
-            <label>Sözleşmeyi okudum ve kabul ediyorum</label>
+            <label className="dark:text-white">
+              Sözleşmeyi okudum ve kabul ediyorum
+            </label>
             {errors.eula && (
               <span className="text-red-500 block">
                 Lütfen sözleşmeyi kabul ediniz!

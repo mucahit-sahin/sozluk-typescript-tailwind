@@ -17,10 +17,22 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
+    if (localStorage.theme === undefined) {
+      localStorage.theme = "light";
+    }
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, [dispatch]);
 
   return (
-    <div className="">
+    <div className="dark:bg-gray-900 ">
       <Navbar />
       <div className="container mx-auto max-w-7xl flex">
         <Agenda />

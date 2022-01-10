@@ -27,9 +27,11 @@ const CreatePost = ({
   return (
     <div>
       {user.username ? (
-        <div className="py-4 px-5 mt-3 bg-gray-100 ">
+        <div className="py-4 px-5 mt-3 bg-gray-100 dark:bg-gray-800">
           <textarea
-            className={`p-2 w-full ${comment ? "h-32" : "h-56"}`}
+            className={`p-2 w-full ${
+              comment ? "h-32" : "h-56"
+            } dark:bg-gray-700 dark:text-white`}
             id="editbox"
             name="Content"
             placeholder={`"${title}" hakkında bilgi verin`}
@@ -49,7 +51,7 @@ const CreatePost = ({
           </button>
         </div>
       ) : (
-        <div className="mt-4">
+        <div className="mt-4 dark:text-white">
           <h3>Bu başlığı ilk yazan sen olmak için giriş yapınız.</h3>
         </div>
       )}

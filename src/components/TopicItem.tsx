@@ -51,7 +51,7 @@ const TopicItem = ({
   };
   return (
     <div className="my-5">
-      <div className="break-words mb-1">
+      <div className="break-words mb-1 dark:text-white">
         <span>{content}</span>
       </div>
       <div className="flex flex-row">

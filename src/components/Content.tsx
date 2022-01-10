@@ -12,7 +12,7 @@ const Content = () => {
           <h1 className="break-words text-xl text-bahama-blue-500 font-bold mb-2">
             {query.get("q")}
           </h1>
-          <span>böyle bir şey yok.</span>
+          <span className="dark:text-white">böyle bir şey yok.</span>
           <CreatePost title={query.get("q")!} />
         </div>
       ) : (

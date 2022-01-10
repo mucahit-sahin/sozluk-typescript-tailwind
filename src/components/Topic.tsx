@@ -15,7 +15,6 @@ const Topic = () => {
   let page = query.get("p") || "1";
 
   useEffect(() => {
-    console.log("page " + page);
     dispatch(searchPostAction(id!, parseInt(page)!));
   }, [dispatch, id, page]);
 
@@ -57,12 +56,12 @@ const Topic = () => {
                   href="?p=1"
                   rel="prev"
                   title="önceki sayfa"
-                  className="ml-1  py-0.5 px-2 border rounded mr-1 border-black "
+                  className="ml-1  py-0.5 px-2 border rounded mr-1 border-black dark:border-white dark:text-white"
                 >
                   «
                 </a>
                 <select
-                  className="w-12 rounded-sm border border-black mr-1"
+                  className="w-12 rounded-sm border border-black mr-1 dark:border-white"
                   defaultValue={page}
                   onChange={(e) => history.push(`?p=${e.target.value}`)}
                 >
@@ -72,7 +71,7 @@ const Topic = () => {
                 <a
                   href={"?p=" + post.numberOfPages}
                   title="son sayfa"
-                  className="ml-1  py-0.5 px-2 border border-black rounded"
+                  className="ml-1  py-0.5 px-2 border border-black rounded dark:border-white dark:text-white"
                 >
                   {post.numberOfPages}
                 </a>
@@ -80,7 +79,7 @@ const Topic = () => {
                   href={"?p=" + post.numberOfPages}
                   rel="prev"
                   title="önceki sayfa"
-                  className="ml-1  py-0.5 px-2 border border-black rounded"
+                  className="ml-1  py-0.5 px-2 border border-black rounded dark:border-white dark:text-white"
                 >
                   »
                 </a>
@@ -106,12 +105,12 @@ const Topic = () => {
                   href={"?p=" + (post.currentPage - 1)}
                   rel="prev"
                   title="önceki sayfa"
-                  className="ml-1  py-0.5 px-2 border rounded mr-1 border-black "
+                  className="ml-1  py-0.5 px-2 border rounded mr-1 border-black dark:border-white dark:text-white"
                 >
                   «
                 </a>
                 <select
-                  className="w-12 rounded-sm border border-black mr-1"
+                  className="w-12 rounded-sm border border-black mr-1 dark:border-white "
                   defaultValue={page}
                   onChange={(e) => history.push(`?p=${e.target.value}`)}
                 >
@@ -121,7 +120,7 @@ const Topic = () => {
                 <a
                   href={"?p=" + post.numberOfPages}
                   title="son sayfa"
-                  className="ml-1  py-0.5 px-2 border border-black rounded"
+                  className="ml-1  py-0.5 px-2 border border-black rounded dark:border-white dark:text-white"
                 >
                   {post.numberOfPages}
                 </a>
@@ -129,7 +128,7 @@ const Topic = () => {
                   href={"?p=" + (post.currentPage + 1)}
                   rel="prev"
                   title="sonraki sayfa"
-                  className="ml-1  py-0.5 px-2 border border-black rounded"
+                  className="ml-1  py-0.5 px-2 border border-black rounded dark:border-white dark:text-white"
                 >
                   »
                 </a>

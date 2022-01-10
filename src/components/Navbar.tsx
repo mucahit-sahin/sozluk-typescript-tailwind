@@ -18,18 +18,45 @@ const Navbar = () => {
     dispatch(isTherePost(search, history));
     setSearch("");
   };
+  const [theme, setTheme] = useState<boolean>(localStorage.theme === "dark");
+  const toggleMode = () => {
+    if (localStorage.theme === undefined) {
+      localStorage.theme = "light";
+    }
+    localStorage.theme === "light"
+      ? (localStorage.theme = "dark")
+      : (localStorage.theme = "light");
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    setTheme(localStorage.theme === "dark");
+  };
 
   const { user } = useSelector((state: AppState) => state.auth);
 
   return (
-    <div className="sticky top-0 bg-white border-t-4 border-b border-mantis-500">
+    <div className="sticky top-0 border-t-4 border-b border-mantis-500 bg-white dark:bg-gray-900">
       <div className="mx-2 sm:mx-auto max-w-7xl flex py-2">
         <Link to="/" className="w-1/6 sm:flex-1 flex items-center">
-          <img
-            className="hidden sm:block h-6"
-            src="https://ekstat.com/img/new-design/eksisozluk_logo.svg"
-            alt="logo"
-          />
+          {theme ? (
+            <img
+              className="hidden sm:block h-6"
+              src="https://ekstat.com/img/new-design/eksisozluk_logo_darktheme.svg"
+              alt="logo"
+            />
+          ) : (
+            <img
+              className="hidden sm:block h-6"
+              src="https://ekstat.com/img/new-design/eksisozluk_logo.svg"
+              alt="logo"
+            />
+          )}
           <img
             className="h-6 sm:hidden"
             src="https://ekstat.com/img/ilogo_smallv2.png"
@@ -60,19 +87,49 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden sm:flex flex-1 justify-end items-center text-sm">
+          <button
+            onClick={() => toggleMode()}
+            className=" h-full leading-7 px-2 rounded-tr-md rounded-br-md"
+          >
+            {theme ? (
+              <img
+                className="h-4"
+                src="https://www.svgrepo.com/show/30310/sun.svg"
+                alt="lightmode"
+              />
+            ) : (
+              <img
+                className="h-4"
+                src="https://www.svgrepo.com/show/35385/moon.svg"
+                alt="darkmode"
+              />
+            )}
+          </button>
           {user.username ? (
-            <>
-              <span className="px-2 hover:underline">{user.username}</span>
-              <Link to="/#" onClick={() => dispatch(logout())}>
+            <div className="flex items-center justify-center">
+              <span className="px-2 dark:text-white hover:underline">
+                {user.username}
+              </span>
+              <Link
+                className="dark:text-white"
+                to="/#"
+                onClick={() => dispatch(logout())}
+              >
                 çıkış yap
               </Link>
-            </>
+            </div>
           ) : (
             <>
-              <Link to="/login" className="px-2 hover:underline">
+              <Link
+                to="/login"
+                className="px-2 dark:text-white hover:underline"
+              >
                 giriş
               </Link>
-              <Link to="/signup" className="ml-1 px-2 hover:underline">
+              <Link
+                to="/signup"
+                className="ml-1 px-2 dark:text-white hover:underline"
+              >
                 üye ol
               </Link>
             </>
