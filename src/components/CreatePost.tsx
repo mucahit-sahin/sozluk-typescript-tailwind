@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import slugify from "slugify";
@@ -16,6 +17,7 @@ const CreatePost = ({
   const dispatch = useDispatch();
   const history = useHistory();
   const { user } = useSelector((state: AppState) => state.auth);
+  const { t } = useTranslation();
 
   const [form, setForm] = useState<PostForm>({
     creator: user.username,
@@ -34,7 +36,7 @@ const CreatePost = ({
             } dark:bg-gray-700 dark:text-white`}
             id="editbox"
             name="Content"
-            placeholder={`"${title}" hakkında bilgi verin`}
+            placeholder={`"${title}" ${t("tell_about")}`}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
           ></textarea>
@@ -47,12 +49,12 @@ const CreatePost = ({
             }}
             className="bg-mantis-500 text-white border border-mantis-700 rounded p-2"
           >
-            yolla
+            {t("submit_post")}
           </button>
         </div>
       ) : (
         <div className="mt-4 dark:text-white">
-          <h3>Bu başlığı ilk yazan sen olmak için giriş yapınız.</h3>
+          <h3>{t("please_login_for_first_post")}</h3>
         </div>
       )}
     </div>

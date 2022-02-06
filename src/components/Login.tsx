@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { AppState } from "../store";
@@ -26,45 +27,54 @@ const Login = () => {
     );
   };
   const { error } = useSelector((state: AppState) => state.auth);
+  const { t } = useTranslation();
 
   return (
     <div className="lg:w-3/5 flex">
       <div className="mx-6 w-96 ">
-        <h1 className="my-6 text-xl font-bold dark:text-white">giriş</h1>
+        <h1 className="my-6 text-xl font-bold dark:text-white">
+          {t("login_page_title")}
+        </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-2">
-            <label className="block mb-1 dark:text-white"> e-mail</label>
+            <label className="block mb-1 dark:text-white">
+              {t("login_email")}
+            </label>
             <input
               type="email"
               className="border border-gray-300 rounded-sm p-2 text-sm w-full"
               {...register("email", { required: true })}
             />
             {errors.email && (
-              <span className="text-red-500">bu alan boş olamaz</span>
+              <span className="text-red-500"> {t("cannot_be_empty")}</span>
             )}
           </div>
           <div className="mb-2">
-            <label className="block mb-1 dark:text-white"> şifre</label>
+            <label className="block mb-1 dark:text-white">
+              {t("login_password")}
+            </label>
             <input
               type="password"
               className="border border-gray-300 rounded-sm p-2 text-sm w-full"
               {...register("password", { required: true })}
             />
             {errors.password && (
-              <span className="text-red-500 ">bu alan boş olamaz</span>
+              <span className="text-red-500 "> {t("cannot_be_empty")}</span>
             )}
           </div>
           <div className="mb-2">
             <input type="checkbox" {...register("rememberMe")} />
-            <label className="dark:text-white">beni hatırla</label>
+            <label className="dark:text-white">{t("login_remember")}</label>
           </div>
           <button
             type="submit"
             className="px-4 py-2 rounded-sm bg-mantis-500 w-full text-white"
           >
-            giriş yap
+            {t("login_button")}
           </button>
-          {error !== "" && <span className="text-red-500">Auth Failed</span>}
+          {error !== "" && (
+            <span className="text-red-500">{t("Auth_Failed")}</span>
+          )}
         </form>
       </div>
     </div>

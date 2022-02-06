@@ -7,7 +7,7 @@ import { applyMiddleware, compose, createStore } from "redux";
 import rootReducer from "./store";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-
+import "./i18next";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;

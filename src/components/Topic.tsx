@@ -6,10 +6,12 @@ import TopicItem from "./TopicItem";
 import { AppState } from "../store";
 import CreatePost from "./CreatePost";
 import useQuery from "../utils/useQuery";
+import { useTranslation } from "react-i18next";
 
 const Topic = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t } = useTranslation();
   let query = useQuery();
   let { id } = useParams<{ id?: string }>();
   let page = query.get("p") || "1";
@@ -34,7 +36,7 @@ const Topic = () => {
   return (
     <div className="flex flex-col w-full lg:w-3/5 px-6">
       {loading ? (
-        <h2>Yükleniyor</h2>
+        <h2>{t("loading")}</h2>
       ) : (
         <div>
           <h1 className="break-words text-xl text-bahama-blue-500 font-bold mb-2">
@@ -43,11 +45,11 @@ const Topic = () => {
           <div className="flex flex-row">
             <div className="text-sm text-bahama-blue-500">
               <Link to="/" className="mr-2">
-                tümü
+                {t("post_all")}
               </Link>
               |
               <Link to="/" className="ml-2">
-                bugün
+                {t("post_today")}
               </Link>
             </div>
             {post.numberOfPages > 1 && (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { AppState } from "../store";
@@ -12,6 +13,10 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   const searchPost = () => {
     if (search === "") return;
@@ -66,7 +71,7 @@ const Navbar = () => {
         <div className="w-5/6  sm:flex-1 flex justify-center">
           <input
             type="text"
-            placeholder="Search"
+            placeholder={t("search")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && searchPost()}
@@ -105,6 +110,18 @@ const Navbar = () => {
               />
             )}
           </button>
+          <div className="" title="language">
+            <select
+              className="bg-mantis-500 text-white px-2 py-1 rounded-l-md rounded-r-md"
+              onChange={(e) => {
+                changeLanguage(e.target.value);
+              }}
+              value={i18n.language}
+            >
+              <option value="tr">TR</option>
+              <option value="en">EN</option>
+            </select>
+          </div>
           {user.username ? (
             <div className="flex items-center justify-center">
               <span className="px-2 dark:text-white hover:underline">
@@ -115,7 +132,7 @@ const Navbar = () => {
                 to="/#"
                 onClick={() => dispatch(logout())}
               >
-                çıkış yap
+                {t("logout")}
               </Link>
             </div>
           ) : (
@@ -124,13 +141,13 @@ const Navbar = () => {
                 to="/login"
                 className="px-2 dark:text-white hover:underline"
               >
-                giriş
+                {t("login")}
               </Link>
               <Link
                 to="/signup"
                 className="ml-1 px-2 dark:text-white hover:underline"
               >
-                üye ol
+                {t("signup")}
               </Link>
             </>
           )}
@@ -140,35 +157,31 @@ const Navbar = () => {
         <ul id="quick-index-nav" className="flex flex-row">
           <QuickIndexItem
             href="/#"
-            title="dünyamızda neler olup bitiyor"
-            text="gündem"
+            title={t("agenda_title")}
+            text={t("agenda")}
+          />
+          <QuickIndexItem href="/#" title={t("debe_title")} text={t("debe")} />
+          <QuickIndexItem
+            href="/#"
+            title={t("problems_title")}
+            text={t("problems")}
           />
           <QuickIndexItem
             href="/#"
-            title="dünün en beğenilen entry'leri"
-            text="debe"
-          />
-          <QuickIndexItem
-            href="/#"
-            title="dünyamızda neler olup bitiyor"
-            text="sorunsallar"
-          />
-          <QuickIndexItem
-            href="/#"
-            title="futbol, basketbol, tenis ve curling gibi ata sporları"
-            text="#spor"
+            title={t("sports_title")}
+            text={t("sports")}
             className="hidden md:block"
           />
           <QuickIndexItem
             href="/#"
-            title="sevgili, eski sevgili ve hoşlanılan kız"
-            text="#ilişkiler"
+            title={t("relationships_title")}
+            text={t("relationships")}
             className="hidden md:block"
           />
           <QuickIndexItem
             href="/#"
-            title="partiler, politikacılar, terör, savaş kan ve korku"
-            text=" #siyaset"
+            title={t("politics_title")}
+            text={t("politics")}
             className="hidden md:block"
           />
           {user.username ? (
@@ -179,14 +192,14 @@ const Navbar = () => {
             <>
               <QuickIndexItem
                 href="/login"
-                title="giriş"
-                text="giriş"
+                title={t("login")}
+                text={t("login")}
                 className="sm:hidden"
               />
               <QuickIndexItem
                 href="/signup"
-                title="üye ol"
-                text="üye ol"
+                title={t("signup")}
+                text={t("signup")}
                 className="sm:hidden"
               />
             </>
@@ -208,7 +221,7 @@ const Navbar = () => {
                 <div
                   id="close-panel"
                   onClick={() => setMore(false)}
-                  className="absolute bg-gray-500 bg-opacity-60 left-0 top-0 w-screen h-screen z-0"
+                  className="absolute left-0 top-0 w-screen h-screen z-0"
                 ></div>
                 <ul className="absolute flex flex-col bg-white border border-gray-400 rounded z-20">
                   <li className="text-center px-7  py-1 hover:bg-gray-300">

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
 import { getLatestPost } from "../store/actions/postActions";
@@ -6,6 +7,7 @@ import TopicsItem from "./TopicsItem";
 
 const Topics = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { posts, loading } = useSelector((state: AppState) => state.post);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ const Topics = () => {
   return (
     <div className="flex flex-col w-full px-6">
       {loading ? (
-        <span>yükleniyor</span>
+        <span>{t("loading")}</span>
       ) : (
         posts.map((post) => (
           <TopicsItem
