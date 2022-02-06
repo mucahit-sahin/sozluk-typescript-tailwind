@@ -35,7 +35,7 @@ function App() {
     <div className="dark:bg-gray-900 ">
       <Navbar />
       <div className="container mx-auto max-w-7xl flex">
-        <Agenda />
+        <Agenda className="hidden lg:block w-1/5 sticky top-28 z-0 mt-4 overflow-y-auto pr-4" />
         <Switch>
           <Route path="/" exact>
             <Content />
@@ -46,6 +46,9 @@ function App() {
           <AuthRoute path="/signup">
             <Signup />
           </AuthRoute>
+          <Route path="/agenda">
+            <Agenda className="mt-4 pr-4 w-full lg:w-3/5 flex flex-col" />
+          </Route>
           <Route path="/:id">
             <Topic />
           </Route>

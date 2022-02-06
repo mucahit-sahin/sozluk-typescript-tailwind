@@ -5,7 +5,7 @@ import { AppState } from "../store";
 import { getAgenda } from "../store/actions/agendaActions";
 import AgendaItem from "./AgendaItem";
 
-const Agenda = () => {
+const Agenda = ({ className }: { className?: string }) => {
   const dispatch = useDispatch();
   const { agenda, loading } = useSelector((state: AppState) => state.agenda);
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Agenda = () => {
 
   return (
     <div
-      className="hidden lg:block w-1/5 sticky top-28 z-0 mt-4 overflow-y-auto pr-4"
+      className={className ? className : ""}
       style={{ height: "calc(100vh - 120px)" }}
     >
       <div className="flex flex-row mb-2 items-center">

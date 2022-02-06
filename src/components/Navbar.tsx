@@ -156,7 +156,7 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl">
         <ul id="quick-index-nav" className="flex flex-row">
           <QuickIndexItem
-            href="/#"
+            href="/agenda"
             title={t("agenda_title")}
             text={t("agenda")}
           />
