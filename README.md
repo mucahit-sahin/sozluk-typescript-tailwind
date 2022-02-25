@@ -4,7 +4,7 @@ In this project, I tried to make a site like "eksisozluk". I developed the backe
 
 ## <a href="https://github.com/mucahit-sahin/sozluk-backend" target="_blank">View Backend Repository</a>
 
-## <a href="https://eksisozluk.vercel.app/" target="_blank">Live Demo</a>
+## <a href="https://eksisozluk.netlify.app/" target="_blank">Live Demo</a>
 
 ## Used Technologies
 
