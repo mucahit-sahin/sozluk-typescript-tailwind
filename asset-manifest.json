@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/sozluk-typescript-tailwind/static/css/main.6b5c52f2.chunk.css",
+    "main.js": "/sozluk-typescript-tailwind/static/js/main.3571de2e.chunk.js",
+    "main.js.map": "/sozluk-typescript-tailwind/static/js/main.3571de2e.chunk.js.map",
+    "runtime-main.js": "/sozluk-typescript-tailwind/static/js/runtime-main.9f8139a5.js",
+    "runtime-main.js.map": "/sozluk-typescript-tailwind/static/js/runtime-main.9f8139a5.js.map",
+    "static/js/2.1fe041fd.chunk.js": "/sozluk-typescript-tailwind/static/js/2.1fe041fd.chunk.js",
+    "static/js/2.1fe041fd.chunk.js.map": "/sozluk-typescript-tailwind/static/js/2.1fe041fd.chunk.js.map",
+    "index.html": "/sozluk-typescript-tailwind/index.html",
+    "static/css/main.6b5c52f2.chunk.css.map": "/sozluk-typescript-tailwind/static/css/main.6b5c52f2.chunk.css.map",
+    "static/js/2.1fe041fd.chunk.js.LICENSE.txt": "/sozluk-typescript-tailwind/static/js/2.1fe041fd.chunk.js.LICENSE.txt",
+    "static/media/getFetch.cjs": "/sozluk-typescript-tailwind/static/media/getFetch.582d29c4.cjs"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9f8139a5.js",
+    "static/js/2.1fe041fd.chunk.js",
+    "static/css/main.6b5c52f2.chunk.css",
+    "static/js/main.3571de2e.chunk.js"
+  ]
+}
